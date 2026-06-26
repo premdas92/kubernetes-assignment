@@ -56,11 +56,10 @@ spec:
             - name: postgres-storage
               mountPath: /var/lib/postgresql/data
             - name: init-script-volume
-              mountPath: /docker-entrypoint-initdb.d # Postgres runs any SQL file placed here on startup
+              mountPath: /docker-entrypoint-initdb.d
       volumes:
         - name: postgres-storage
-          persistentVolumeClaim:
-            claimName: postgres-pvc
+          emptyDir: {} # Fix: Uses local node storage to run instantly on AWS without drivers
         - name: init-script-volume
           configMap:
             name: db-seed-script
