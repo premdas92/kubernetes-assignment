@@ -59,7 +59,7 @@ spec:
               mountPath: /docker-entrypoint-initdb.d
       volumes:
         - name: postgres-storage
-          emptyDir: {} # Fix: Uses local node storage to run instantly on AWS without drivers
+          emptyDir: {} # FIX: Uses local fast node storage so it runs instantly on AWS without external drivers
         - name: init-script-volume
           configMap:
             name: db-seed-script
