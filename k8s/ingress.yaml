@@ -3,8 +3,11 @@ kind: Ingress
 metadata:
   name: nagp-api-ingress
   annotations:
-    nginx.ingress.kubernetes.io/rewrite-target: /
+    # This tells AWS to create a public-facing, internet-connected ALB
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/target-type: ip
 spec:
+  ingressClassName: alb # CRITICAL FIX: Tells AWS EKS to pick this up and generate your URL
   rules:
     - http:
         paths:
