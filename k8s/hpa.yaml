@@ -1,0 +1,18 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: nagp-api-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: nagp-api-deployment
+  minReplicas: 4 # Keeps a minimum of 4 pods as requested
+  maxReplicas: 10 # Allows scaling up to 10 pods under heavy load
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 70 # Scales up if average CPU exceeds 70%
