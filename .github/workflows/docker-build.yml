@@ -22,5 +22,4 @@ jobs:
         with:
           context: .
           push: true
-          # Replace 'your-dockerhub-username' with your actual Docker Hub handle below
-          tags: your-dockerhub-username/nagp-api:v1
+          tags: premdas92/nagp-api:v1
