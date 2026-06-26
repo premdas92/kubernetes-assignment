@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-config
+data:
+  DB_HOST: "postgres-service" # This matches the internal DNS name of our DB service
+  DB_NAME: "nagp_assignment_db"
+  DB_USER: "postgres_admin"
